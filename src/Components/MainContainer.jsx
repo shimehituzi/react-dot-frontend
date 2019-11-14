@@ -4,7 +4,7 @@ import CssBaseline from '@material-ui/core/CssBaseline';
 import Container from '@material-ui/core/Container';
 import {MuiThemeProvider} from '@material-ui/core';
 import {theme} from './materialUI/theme';
-import RoomContainer from './RoomContainer'
+import RoomsContainer from './RoomsContainer'
 import AppbarContainer from './AppbarContainer'
 import FormContainer from './FormContainer'
 import update from 'react-addons-update';
@@ -51,7 +51,7 @@ class MainContainer extends React.Component {
           <Container maxWidth="sm">
             <AppbarContainer triggerRoomCreateForm={this.triggerRoomCreateForm}/>
             {this.state.formFlag && <FormContainer createRoom={this.createRoom}/>}
-            <RoomContainer roomsData={this.state.rooms} />
+            <RoomsContainer roomsData={this.state.rooms} />
           </Container>
         </React.Fragment>
       </MuiThemeProvider>
