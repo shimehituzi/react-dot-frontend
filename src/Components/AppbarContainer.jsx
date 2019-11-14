@@ -6,6 +6,10 @@ import IconButton from '@material-ui/core/IconButton'
 import AddIcon from '@material-ui/icons/Add'
 
 class AppbarContainer extends React.Component {
+  handleClick = () => {
+    this.props.triggerRoomCreateForm()
+  }
+
   render() {
     const style = {
       flexGrow: 1
@@ -17,7 +21,7 @@ class AppbarContainer extends React.Component {
           <Typography variant="h6" style={style}>
             EIChat
           </Typography>
-          <IconButton color="secondary" size="small">
+          <IconButton color="secondary" size="small" onClick={this.handleClick}>
             <AddIcon />
           </IconButton>
         </Toolbar>

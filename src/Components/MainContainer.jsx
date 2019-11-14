@@ -6,12 +6,14 @@ import {MuiThemeProvider} from '@material-ui/core';
 import {theme} from './materialUI/theme';
 import RoomContainer from './RoomContainer'
 import AppbarContainer from './AppbarContainer'
+import FormContainer from './FormContainer'
 
 class MainContainer extends React.Component {
   constructor(props) {
     super(props)
     this.state = {
-      rooms: []
+      rooms: [],
+      formFlag: false
     }
   }
 
@@ -25,13 +27,18 @@ class MainContainer extends React.Component {
       })
   }
 
+  triggerRoomCreateForm = () => {
+    this.setState({formFlag: !this.state.formFlag})
+  }
+
   render() {
     return (
       <MuiThemeProvider theme={theme}>
         <React.Fragment>
           <CssBaseline />
           <Container maxWidth="sm">
-            <AppbarContainer />
+            <AppbarContainer triggerRoomCreateForm={this.triggerRoomCreateForm}/>
+            {this.state.formFlag && <FormContainer/>}
             <RoomContainer roomsData={this.state.rooms} />
           </Container>
         </React.Fragment>
