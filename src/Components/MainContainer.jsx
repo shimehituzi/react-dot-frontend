@@ -2,9 +2,10 @@ import React from 'react';
 import axios from 'axios';
 import CssBaseline from '@material-ui/core/CssBaseline';
 import Container from '@material-ui/core/Container';
-import RoomContainer from './RoomContainer'
 import {MuiThemeProvider} from '@material-ui/core';
 import {theme} from './materialUI/theme';
+import RoomContainer from './RoomContainer'
+import AppbarContainer from './AppbarContainer'
 
 class MainContainer extends React.Component {
   constructor(props) {
@@ -30,6 +31,7 @@ class MainContainer extends React.Component {
         <React.Fragment>
           <CssBaseline />
           <Container maxWidth="sm">
+            <AppbarContainer />
             <RoomContainer roomsData={this.state.rooms} />
           </Container>
         </React.Fragment>
