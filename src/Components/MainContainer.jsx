@@ -7,6 +7,7 @@ import {theme} from './materialUI/theme';
 import RoomContainer from './RoomContainer'
 import AppbarContainer from './AppbarContainer'
 import FormContainer from './FormContainer'
+import update from 'react-addons-update';
 
 class MainContainer extends React.Component {
   constructor(props) {
@@ -31,6 +32,17 @@ class MainContainer extends React.Component {
     this.setState({formFlag: !this.state.formFlag})
   }
 
+  createRoom = (name) => {
+    axios.post(process.env.REACT_APP_SERVER_URL + "/rooms", {name: name})
+      .then((result) => {
+        const newData = update(this.state.rooms, {$push:[result.data]})
+        this.setState({rooms: newData})
+      })
+      .catch((data) => {
+        console.log(data)
+      })
+  }
+
   render() {
     return (
       <MuiThemeProvider theme={theme}>
@@ -38,7 +50,7 @@ class MainContainer extends React.Component {
           <CssBaseline />
           <Container maxWidth="sm">
             <AppbarContainer triggerRoomCreateForm={this.triggerRoomCreateForm}/>
-            {this.state.formFlag && <FormContainer/>}
+            {this.state.formFlag && <FormContainer createRoom={this.createRoom}/>}
             <RoomContainer roomsData={this.state.rooms} />
           </Container>
         </React.Fragment>

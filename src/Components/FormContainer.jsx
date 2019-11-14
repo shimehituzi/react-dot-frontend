@@ -15,7 +15,12 @@ class FormContainer extends React.Component {
     this.setState({text: e.target.value})
   }
 
-  handleSubmit = (e) => {
+  handleSubmit = () => {
+    this.props.createRoom(this.state.text)
+    this.setState({text: ''})
+  }
+
+  handleNotSubmit = (e) => {
     e.preventDefault();
   }
 
@@ -34,13 +39,14 @@ class FormContainer extends React.Component {
     return(
       <div style={style.root}>
         <Grid item sm={10}>
-          <form noValidate autoComplete="off" onSubmit={e => this.handleSubmit(e)}>
+          <form noValidate autoComplete="off" onSubmit={e => this.handleNotSubmit(e)}>
             <TextField
               variant="outlined"
               label="部屋名"
               color="secondary"
               margin="normal"
               fullWidth={true}
+              value={this.state.text}
               onChange={ e => this.handleChengeText(e) }
             />
           </form>
@@ -51,6 +57,8 @@ class FormContainer extends React.Component {
             color="secondary"
             variant="outlined"
             style={style.button}
+            type="submit"
+            onClick={this.handleSubmit}
           >
             部屋作成
           </Button>
