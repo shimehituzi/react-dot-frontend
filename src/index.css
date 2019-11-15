@@ -31,27 +31,3 @@ code {
   text-align: center;
   width: 34px;
 }
-
-.dot-white {
-  background: #ffffff;
-}
-
-.dot-black {
-  background: #666666;
-}
-
-.dot-red {
-  background: #ff8a80;
-}
-
-.dot-blue {
-  background: #82b1ff;
-}
-
-.dot-green {
-  background: #b9f6ca;
-}
-
-.dot-yellow {
-  background: #ffff8d;
-}

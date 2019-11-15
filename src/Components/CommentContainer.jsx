@@ -16,19 +16,19 @@ class CommentContainer extends React.Component {
   getColor = (data) => {
     switch(data) {
       case '1':
-        return 'dot-red'
+        return '#ff8a80'
       case '2':
-        return 'dot-blue'
+        return '#82b1ff'
       case '3':
-        return 'dot-green'
+        return '#b9f6ca'
       case '4':
-        return 'dot-yellow'
+        return '#ffff8d'
       case '5':
-        return 'dot-black'
+        return '#666666'
       case '0':
-        return 'dot-white'
+        return '#ffffff'
       default:
-        return 'dot-white'
+        return '#ffffff'
     }
   }
 
@@ -45,7 +45,7 @@ class CommentContainer extends React.Component {
               <div className='campus-row' key={j}>
                 {range(j * col, j * col + col -1, 1).map((i) => {
                   return(
-                    <div key={i} className={`dot ${this.getColor(this.props.comment.text.charAt(i))}`}></div>
+                    <div key={i} className="dot" style={{background: `${this.getColor(this.props.comment.text.charAt(i))}`}} ></div>
                   )
                 })}
               </div>
