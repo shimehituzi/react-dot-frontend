@@ -10,38 +10,11 @@ class CommentContainer extends React.Component {
       col: col,
       row: row,
       dots: Array(row * col).fill("0"),
-      color: "5"
     }
   }
 
-  render() {
-    const range = (start, stop, step) => Array.from({ length: (stop - start) / step + 1}, (_, i) => start + (i * step));
-
-    const row = this.state.row
-    const col = this.state.col
-    return(
-      <ListItem>
-        <div className="campus-table">
-          {range(0, row-1, 1).map((j) => {
-            return(
-              <div className='campus-row' key={j}>
-                {range(j * col, j * col + col -1, 1).map((i) => {
-                  return(
-                    <Dot value={this.props.comment.text.charAt(i)} key={i} />
-                  )
-                })}
-              </div>
-            )
-          })}
-        </div>
-      </ListItem>
-    )
-  }
-}
-
-let Dot = props => {
-  const getColor = () => {
-    switch(props.value) {
+  getColor = (data) => {
+    switch(data) {
       case '1':
         return 'dot-red'
       case '2':
@@ -59,9 +32,29 @@ let Dot = props => {
     }
   }
 
-  return(
-    <div className={`dot ${getColor()}`}></div>
-  )
+  render() {
+    const range = (start, stop, step) => Array.from({ length: (stop - start) / step + 1}, (_, i) => start + (i * step))
+    const row = this.state.row
+    const col = this.state.col
+
+    return(
+      <ListItem>
+        <div className="campus-table">
+          {range(0, row-1, 1).map((j) => {
+            return(
+              <div className='campus-row' key={j}>
+                {range(j * col, j * col + col -1, 1).map((i) => {
+                  return(
+                    <div key={i} className={`dot ${this.getColor(this.props.comment.text.charAt(i))}`}></div>
+                  )
+                })}
+              </div>
+            )
+          })}
+        </div>
+      </ListItem>
+    )
+  }
 }
 
 export default CommentContainer

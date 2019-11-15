@@ -19,7 +19,7 @@ code {
 }
 
 .dot {
-  border: 0.1px solid #eee;
+  border: 0px solid #eee;
   float: left;
   font-size: 15px;
   font-weight: bold;
