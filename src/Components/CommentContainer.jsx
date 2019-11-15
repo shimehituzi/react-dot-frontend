@@ -60,7 +60,7 @@ let Dot = props => {
   }
 
   return(
-    <button className={`dot ${getColor()}`}></button>
+    <div className={`dot ${getColor()}`}></div>
   )
 }
 
