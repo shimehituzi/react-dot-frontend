@@ -10,21 +10,33 @@ class CommentContainer extends React.Component {
       col: col,
       row: row,
       dots: Array(row * col).fill("0"),
-      color: "5"
     }
   }
 
-  handleClick = (i) => {
-    const dots = this.state.dots.slice()
-    dots[i] = this.state.color
-    this.setState({dots: dots})
+  getColor = (data) => {
+    switch(data) {
+      case '1':
+        return '#ff8a80'
+      case '2':
+        return '#82b1ff'
+      case '3':
+        return '#b9f6ca'
+      case '4':
+        return '#ffff8d'
+      case '5':
+        return '#666666'
+      case '0':
+        return '#ffffff'
+      default:
+        return '#ffffff'
+    }
   }
 
   render() {
-    const range = (start, stop, step) => Array.from({ length: (stop - start) / step + 1}, (_, i) => start + (i * step));
-
+    const range = (start, stop, step) => Array.from({ length: (stop - start) / step + 1}, (_, i) => start + (i * step))
     const row = this.state.row
     const col = this.state.col
+
     return(
       <ListItem>
         <div className="campus-table">
@@ -33,7 +45,7 @@ class CommentContainer extends React.Component {
               <div className='campus-row' key={j}>
                 {range(j * col, j * col + col -1, 1).map((i) => {
                   return(
-                    <Dot value={this.state.dots[i]} handleClick={() => this.handleClick(i)} key={i} />
+                    <div key={i} className="dot" style={{background: `${this.getColor(this.props.comment.text.charAt(i))}`}} ></div>
                   )
                 })}
               </div>
@@ -43,31 +55,6 @@ class CommentContainer extends React.Component {
       </ListItem>
     )
   }
-}
-
-let Dot = props => {
-  const getColor = () => {
-    switch(props.value) {
-      case '1':
-        return 'dot-red'
-      case '2':
-        return 'dot-blue'
-      case '3':
-        return 'dot-green'
-      case '4':
-        return 'dot-yellow'
-      case '5':
-        return 'dot-black'
-      case '0':
-        return 'dot-white'
-      default:
-        return 'dot-white'
-    }
-  }
-
-  return(
-    <button className={`dot ${getColor()}`} onClick={props.handleClick}></button>
-  )
 }
 
 export default CommentContainer
