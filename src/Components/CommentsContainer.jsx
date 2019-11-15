@@ -1,22 +1,17 @@
 import React from 'react'
-import {List, ListItem, ListItemText} from '@material-ui/core'
+import {List} from '@material-ui/core'
+import CommentContainer from './CommentContainer'
 
-class CommentsContainer extends React.Component {
-  render() {
-    return(
-      <List>
-        {this.props.commentsData.map((comment) => {
-          return(
-            <ListItem dense={true} key={comment.id}>
-              <ListItemText
-                primary={comment.text}
-              />
-            </ListItem>
-          )
-        })}
-      </List>
-    )
-  }
+let CommentsContainer = props => {
+  return(
+    <List>
+      {props.commentsData.map((comment) => {
+        return(
+          <CommentContainer comment={comment} key={comment.id}/>
+        )
+      })}
+    </List>
+  )
 }
 
 export default CommentsContainer
