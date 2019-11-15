@@ -18,7 +18,7 @@ class AppbarContainer extends React.Component {
     return(
       <AppBar position="static" style={style}>
         <Toolbar>
-          <Typography variant="h6" style={style}>
+          <Typography variant="h5" style={style}>
             EIChat
           </Typography>
           <IconButton color="secondary" size="small" onClick={this.handleClick}>
