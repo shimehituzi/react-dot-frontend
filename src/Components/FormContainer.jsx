@@ -1,6 +1,6 @@
 import React from 'react'
 import TextField from '@material-ui/core/TextField'
-import {Button} from '@material-ui/core'
+import {Button, Paper} from '@material-ui/core'
 import {Grid} from '@material-ui/core'
 
 class FormContainer extends React.Component {
@@ -37,33 +37,35 @@ class FormContainer extends React.Component {
     }
 
     return(
-      <div style={style.root}>
-        <Grid item sm={10}>
-          <form noValidate autoComplete="off" onSubmit={e => this.handleNotSubmit(e)}>
-            <TextField
-              variant="outlined"
-              label="部屋名"
+      <Paper>
+        <div style={style.root}>
+          <Grid item sm={10}>
+            <form noValidate autoComplete="off" onSubmit={e => this.handleNotSubmit(e)}>
+              <TextField
+                variant="outlined"
+                label="部屋名"
+                color="secondary"
+                margin="normal"
+                fullWidth={true}
+                value={this.state.text}
+                onChange={ e => this.handleChengeText(e) }
+              />
+            </form>
+          </Grid>
+          <Grid item sm={2}>
+            <Button
+              size="small"
               color="secondary"
-              margin="normal"
-              fullWidth={true}
-              value={this.state.text}
-              onChange={ e => this.handleChengeText(e) }
-            />
-          </form>
-        </Grid>
-        <Grid item sm={2}>
-          <Button
-            size="small"
-            color="secondary"
-            variant="outlined"
-            style={style.button}
-            type="submit"
-            onClick={this.handleSubmit}
-          >
-            部屋作成
-          </Button>
-        </Grid>
-      </div>
+              variant="outlined"
+              style={style.button}
+              type="submit"
+              onClick={this.handleSubmit}
+            >
+              部屋作成
+            </Button>
+          </Grid>
+        </div>
+      </Paper>
     )
   }
 }
