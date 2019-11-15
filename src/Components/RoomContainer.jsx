@@ -6,6 +6,8 @@ import ExpansionPanelDetails from '@material-ui/core/ExpansionPanelDetails'
 import ExpandMoreIcon from '@material-ui/icons/ExpandMore'
 import CommentsContainer from './CommentsContainer'
 import {Toolbar, Fab, Typography, Grid} from '@material-ui/core'
+import Dialog from '@material-ui/core/Dialog'
+import Slide from '@material-ui/core/Slide'
 import AddIcon from '@material-ui/icons/Add'
 import DotFormContainer from './DotFormContainer'
 
@@ -41,11 +43,17 @@ class RoomContainer extends React.Component {
   }
 
   render() {
+    const Transition = React.forwardRef(function Transition(props, ref) {
+      return <Slide direction="up" ref={ref} {...props} />;
+    });
+
     return(
       <ExpansionPanel onClick={() => this.handleRoomClick(this.props.room.id)}>
         <ExpansionPanelSummary expandIcon={<ExpandMoreIcon />} >
           <Toolbar>
-            <Typography variant="h6" color="textPrimary" style={{display: "flex", justifyContent: "center", alignItems: "center"}}>{this.props.room.name}</Typography>
+            <Typography variant="h6" color="textPrimary" style={{display: "flex", justifyContent: "center", alignItems: "center"}}>
+              {this.props.room.name}
+            </Typography>
           </Toolbar>
         </ExpansionPanelSummary>
         <ExpansionPanelDetails>
@@ -55,7 +63,11 @@ class RoomContainer extends React.Component {
                 <Fab color="secondary" size="medium" onClick={this.handleClickOpen}>
                   <AddIcon />
                 </Fab>
-                <DotFormContainer/>
+                <Dialog fullScreen open={this.state.open} onClose={this.handleClickClose} TransitionComponent={Transition}>
+                  <DotFormContainer
+                    handleClickClose={this.handleClickClose}
+                  />
+                </Dialog>
               </Grid>
             </Grid>
             <Grid item xs={12}>
