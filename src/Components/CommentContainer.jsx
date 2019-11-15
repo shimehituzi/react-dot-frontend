@@ -14,10 +14,6 @@ class CommentContainer extends React.Component {
     }
   }
 
-  componentDidMount() {
-    console.log(this.props)
-  }
-
   render() {
     const range = (start, stop, step) => Array.from({ length: (stop - start) / step + 1}, (_, i) => start + (i * step));
 
