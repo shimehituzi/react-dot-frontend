@@ -11,3 +11,47 @@ code {
   font-family: source-code-pro, Menlo, Monaco, Consolas, "Courier New",
     monospace;
 }
+
+.campus-row:after {
+  clear: both;
+  content: "";
+  display: table;
+}
+
+.dot {
+  border: 0.1px solid #eee;
+  float: left;
+  font-size: 15px;
+  font-weight: bold;
+  line-height: 34px;
+  height: 34px;
+  margin-right: -1px;
+  margin-top: -1px;
+  padding: 0;
+  text-align: center;
+  width: 34px;
+}
+
+.dot-white {
+  background: #ffffff;
+}
+
+.dot-black {
+  background: #666666;
+}
+
+.dot-red {
+  background: #ff8a80;
+}
+
+.dot-blue {
+  background: #82b1ff;
+}
+
+.dot-green {
+  background: #b9f6ca;
+}
+
+.dot-yellow {
+  background: #ffff8d;
+}
