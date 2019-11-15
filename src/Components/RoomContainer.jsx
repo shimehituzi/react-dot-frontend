@@ -5,6 +5,8 @@ import ExpansionPanelSummary from '@material-ui/core/ExpansionPanelSummary'
 import ExpansionPanelDetails from '@material-ui/core/ExpansionPanelDetails'
 import ExpandMoreIcon from '@material-ui/icons/ExpandMore'
 import CommentsContainer from './CommentsContainer'
+import {Toolbar, Fab} from '@material-ui/core'
+import AddIcon from '@material-ui/icons/Add'
 
 class RoomContainer extends React.Component {
   constructor(props) {
@@ -32,6 +34,11 @@ class RoomContainer extends React.Component {
     return(
       <ExpansionPanel onClick={() => this.handleRoomClick(this.props.room.id)}>
         <ExpansionPanelSummary expandIcon={<ExpandMoreIcon />} >
+          <Toolbar color="">
+            <Fab color="primary" size="small">
+              <AddIcon />
+            </Fab>
+          </Toolbar>
           <strong>{this.props.room.name}</strong>
         </ExpansionPanelSummary>
         <ExpansionPanelDetails>
