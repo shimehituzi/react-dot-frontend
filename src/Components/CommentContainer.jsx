@@ -14,10 +14,8 @@ class CommentContainer extends React.Component {
     }
   }
 
-  handleClick = (i) => {
-    const dots = this.state.dots.slice()
-    dots[i] = this.state.color
-    this.setState({dots: dots})
+  componentDidMount() {
+    console.log(this.props)
   }
 
   render() {
@@ -33,7 +31,7 @@ class CommentContainer extends React.Component {
               <div className='campus-row' key={j}>
                 {range(j * col, j * col + col -1, 1).map((i) => {
                   return(
-                    <Dot value={this.state.dots[i]} handleClick={() => this.handleClick(i)} key={i} />
+                    <Dot value={this.props.comment.text.charAt(i)} key={i} />
                   )
                 })}
               </div>
@@ -66,7 +64,7 @@ let Dot = props => {
   }
 
   return(
-    <button className={`dot ${getColor()}`} onClick={props.handleClick}></button>
+    <button className={`dot ${getColor()}`}></button>
   )
 }
 
