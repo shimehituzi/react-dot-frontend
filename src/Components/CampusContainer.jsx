@@ -32,6 +32,12 @@ class CampusContainer extends React.Component {
     }
   }
 
+  handleclick = (i) => {
+    const dots = this.state.dots.slice()
+    dots[i] = this.state.color
+    this.setState({dots: dots})
+  }
+
   render() {
     const range = (start, stop, step) => Array.from({ length: (stop - start) / step + 1}, (_, i) => start + (i * step))
     const row = this.state.row
@@ -44,7 +50,13 @@ class CampusContainer extends React.Component {
             <div className='campus-row' key={j}>
               {range(j * col, j * col + col -1, 1).map((i) => {
                 return(
-                  <div key={i} className="dot" style={{background: `${this.getColor(this.state.dots[i])}`}} ></div>
+                  <div
+                    key={i}
+                    className="dot"
+                    style={{background: `${this.getColor(this.state.dots[i])}`}}
+                    onClick={() => this.handleclick(i)}
+                  >
+                  </div>
                 )
               })}
             </div>
