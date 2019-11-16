@@ -14,6 +14,7 @@ class ColorPulletContainer extends React.Component {
 
   handleChange = (_, newColor) => {
     if (newColor != null) this.setState({color: newColor})
+    this.props.changeColor(newColor)
   }
 
 

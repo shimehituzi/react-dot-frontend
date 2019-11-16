@@ -39,6 +39,10 @@ class CampusContainer extends React.Component {
     this.setState({dots: dots})
   }
 
+  changeColor = (newColor) => {
+    this.setState({color: newColor})
+  }
+
   render() {
     const range = (start, stop, step) => Array.from({ length: (stop - start) / step + 1}, (_, i) => start + (i * step))
     const row = this.state.row
@@ -46,7 +50,7 @@ class CampusContainer extends React.Component {
 
     return(
       <div>
-        <ColorPulletContainer/>
+        <ColorPulletContainer changeColor={this.changeColor}/>
         <div className="campus-table">
           {range(0, row-1, 1).map((j) => {
             return(
