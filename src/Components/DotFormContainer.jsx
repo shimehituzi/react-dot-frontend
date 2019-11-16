@@ -9,7 +9,8 @@ class DotFormContainer extends React.Component {
   constructor(props) {
     super(props)
     this.state = {
-      open: false
+      open: false,
+      text: ''
     }
   }
 
@@ -24,12 +25,16 @@ class DotFormContainer extends React.Component {
   handleCancel = () => {
     this.setState({open: false})
     this.props.handleClose()
-    console.log("cancel")
   }
 
   handleOK = () => {
+    this.props.createComment(this.state.text)
     this.props.handleClose()
-    console.log("OK")
+    this.setState({text: ''})
+  }
+
+  updateText = (text) => {
+    this.setState({text: text})
   }
 
   render() {
@@ -43,7 +48,7 @@ class DotFormContainer extends React.Component {
       >
         <DialogTitle>投稿</DialogTitle>
         <DialogContent dividers>
-          <CampusContainer/>
+          <CampusContainer updateText={this.updateText}/>
         </DialogContent>
         <DialogActions>
           <Button autoFocus onClick={this.handleOpenCancel} color="primary">

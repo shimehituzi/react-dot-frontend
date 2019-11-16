@@ -43,6 +43,18 @@ class CampusContainer extends React.Component {
     this.setState({color: newColor})
   }
 
+  componentDidMount() {
+    const text = this.state.dots.join('')
+    this.props.updateText(text)
+  }
+
+  componentDidUpdate(_, prevState) {
+    if (JSON.stringify(this.state.dots) !== JSON.stringify(prevState.dots)) {
+      const text = this.state.dots.join('')
+      this.props.updateText(text)
+    }
+  }
+
   render() {
     const range = (start, stop, step) => Array.from({ length: (stop - start) / step + 1}, (_, i) => start + (i * step))
     const row = this.state.row
