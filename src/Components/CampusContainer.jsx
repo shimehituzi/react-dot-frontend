@@ -1,4 +1,5 @@
 import React from 'react'
+import ColorPulletContainer from './ColorPulletContainer'
 
 class CampusContainer extends React.Component {
   constructor(props) {
@@ -44,24 +45,27 @@ class CampusContainer extends React.Component {
     const col = this.state.col
 
     return(
-      <div className="campus-table">
-        {range(0, row-1, 1).map((j) => {
-          return(
-            <div className='campus-row' key={j}>
-              {range(j * col, j * col + col -1, 1).map((i) => {
-                return(
-                  <div
-                    key={i}
-                    className="dot"
-                    style={{background: `${this.getColor(this.state.dots[i])}`}}
-                    onClick={() => this.handleclick(i)}
-                  >
-                  </div>
-                )
-              })}
-            </div>
-          )
-        })}
+      <div>
+        <ColorPulletContainer/>
+        <div className="campus-table">
+          {range(0, row-1, 1).map((j) => {
+            return(
+              <div className='campus-row' key={j}>
+                {range(j * col, j * col + col -1, 1).map((i) => {
+                  return(
+                    <div
+                      key={i}
+                      className="dot"
+                      style={{background: `${this.getColor(this.state.dots[i])}`}}
+                      onClick={() => this.handleclick(i)}
+                    >
+                    </div>
+                  )
+                })}
+              </div>
+            )
+          })}
+        </div>
       </div>
     )
   }
