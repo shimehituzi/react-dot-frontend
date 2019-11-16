@@ -2,17 +2,6 @@ import React from 'react'
 import {ListItem} from '@material-ui/core'
 
 class CommentContainer extends React.Component {
-  constructor(props) {
-    super(props)
-    const row = 9
-    const col = 9
-    this.state = {
-      col: col,
-      row: row,
-      dots: Array(row * col).fill("0"),
-    }
-  }
-
   getColor = (data) => {
     switch(data) {
       case '1':
@@ -34,8 +23,8 @@ class CommentContainer extends React.Component {
 
   render() {
     const range = (start, stop, step) => Array.from({ length: (stop - start) / step + 1}, (_, i) => start + (i * step))
-    const row = this.state.row
-    const col = this.state.col
+    const row = 9
+    const col = 9
 
     return(
       <ListItem>

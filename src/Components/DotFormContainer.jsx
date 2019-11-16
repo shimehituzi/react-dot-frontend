@@ -1,5 +1,6 @@
 import React from 'react'
 import {Dialog, DialogTitle, DialogContent, DialogActions, Button} from '@material-ui/core'
+import CampusContainer from './CampusContainer'
 
 class DotFormContainer extends React.Component {
   handleCancel = () => {
@@ -22,6 +23,7 @@ class DotFormContainer extends React.Component {
       >
         <DialogTitle>投稿</DialogTitle>
         <DialogContent dividers>
+          <CampusContainer/>
         </DialogContent>
         <DialogActions>
           <Button autoFocus onClick={this.handleCancel} color="primary">
