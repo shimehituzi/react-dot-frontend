@@ -7,7 +7,7 @@ class CampusContainer extends React.Component {
     const row = 9
     const col = 9
     this.state = {
-      color: '5',
+      color: '1',
       row: row,
       col: col,
       dots: Array(row * col).fill('0')
@@ -17,19 +17,19 @@ class CampusContainer extends React.Component {
   getColor = (data) => {
     switch(data) {
       case '1':
-        return '#ff8a80'
+        return '#616161'
       case '2':
-        return '#82b1ff'
+        return '#ff8a80'
       case '3':
-        return '#b9f6ca'
+        return '#82b1ff'
       case '4':
-        return '#ffff8d'
+        return '#b9f6ca'
       case '5':
-        return '#666666'
+        return '#ffff8d'
       case '0':
-        return '#ffffff'
+        return '#f5f5f5'
       default:
-        return '#ffffff'
+        return '#f5f5f5'
     }
   }
 
