@@ -35,7 +35,7 @@ class MainContainer extends React.Component {
   createRoom = (name) => {
     axios.post(process.env.REACT_APP_SERVER_URL + "/rooms", {name: name})
       .then((result) => {
-        const newData = update(this.state.rooms, {$push:[result.data]})
+        const newData = update(this.state.rooms, {$unshift:[result.data]})
         this.setState({rooms: newData})
       })
       .catch((data) => {
