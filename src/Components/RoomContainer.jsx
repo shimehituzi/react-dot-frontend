@@ -6,8 +6,6 @@ import ExpansionPanelDetails from '@material-ui/core/ExpansionPanelDetails'
 import ExpandMoreIcon from '@material-ui/icons/ExpandMore'
 import CommentsContainer from './CommentsContainer'
 import {Toolbar, Fab, Typography, Grid} from '@material-ui/core'
-import Dialog from '@material-ui/core/Dialog'
-import Slide from '@material-ui/core/Slide'
 import AddIcon from '@material-ui/icons/Add'
 import DotFormContainer from './DotFormContainer'
 
@@ -17,7 +15,7 @@ class RoomContainer extends React.Component {
     this.state = {
       comments: [],
       isClose: true,
-      open: false,
+      open: false
     }
   }
 
@@ -34,19 +32,15 @@ class RoomContainer extends React.Component {
     this.setState({isClose: !this.state.isClose})
   }
 
-  handleClickOpen = () => {
+  handleOpen = () => {
     this.setState({open: true})
   }
 
-  handleClickClose = () => {
+  handleClose = () => {
     this.setState({open: false})
   }
 
   render() {
-    const Transition = React.forwardRef(function Transition(props, ref) {
-      return <Slide direction="up" ref={ref} {...props} />;
-    });
-
     return(
       <ExpansionPanel onClick={() => this.handleRoomClick(this.props.room.id)}>
         <ExpansionPanelSummary expandIcon={<ExpandMoreIcon />} >
@@ -60,14 +54,14 @@ class RoomContainer extends React.Component {
           <Grid container justify = "center">
             <Grid item xs={12} style={{marginBottom: "10%"}}>
               <Grid container justify = "center">
-                <Fab color="secondary" size="medium" onClick={this.handleClickOpen}>
+                <Fab color="secondary" size="medium" onClick={this.handleOpen}>
                   <AddIcon />
                 </Fab>
-                <Dialog fullScreen open={this.state.open} onClose={this.handleClickClose} TransitionComponent={Transition}>
-                  <DotFormContainer
-                    handleClickClose={this.handleClickClose}
-                  />
-                </Dialog>
+                <DotFormContainer
+                  keepMounted
+                  open={this.state.open}
+                  handleClose={this.handleClose}
+                />
               </Grid>
             </Grid>
             <Grid item xs={12}>
