@@ -1,6 +1,9 @@
 import React from 'react'
-import {Dialog, DialogTitle, DialogContent, DialogActions, Button} from '@material-ui/core'
+import {Dialog, DialogTitle, DialogContent, DialogActions, Button, Paper} from '@material-ui/core'
 import CampusContainer from './CampusContainer'
+import Draggable from 'react-draggable'
+
+let PaperComponent = props => <Draggable cancel={ '[class*="MuiDialogContent-root"]' }><Paper {...props} /></Draggable>
 
 class DotFormContainer extends React.Component {
   handleCancel = () => {
@@ -20,6 +23,7 @@ class DotFormContainer extends React.Component {
         disableEscapeKeyDown
         maxWidth="sm"
         open={this.props.open}
+        PaperComponent={PaperComponent}
       >
         <DialogTitle>投稿</DialogTitle>
         <DialogContent dividers>

@@ -13,11 +13,11 @@ class CommentContainer extends React.Component {
       case '4':
         return '#ffff8d'
       case '5':
-        return '#666666'
+        return '#616161'
       case '0':
-        return '#ffffff'
+        return '#f5f5f5'
       default:
-        return '#ffffff'
+        return '#f5f5f5'
     }
   }
 
