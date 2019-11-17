@@ -26,6 +26,7 @@ class MainContainer extends React.Component {
       .catch((data) => {
         console.log(data)
       })
+    console.log(process.env.REACT_APP_SERVER_URL)
   }
 
   triggerRoomCreateForm = () => {
