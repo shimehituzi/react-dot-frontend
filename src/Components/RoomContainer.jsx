@@ -61,8 +61,8 @@ class RoomContainer extends React.Component {
 
   render() {
     return(
-      <ExpansionPanel onClick={this.handleRoomClick}>
-        <ExpansionPanelSummary expandIcon={<ExpandMoreIcon />} >
+      <ExpansionPanel >
+        <ExpansionPanelSummary expandIcon={<ExpandMoreIcon />} onClick={this.handleRoomClick}>
           <Toolbar>
             <Typography variant="h6" color="textPrimary" style={{display: "flex", justifyContent: "center", alignItems: "center"}}>
               {this.props.room.name}
