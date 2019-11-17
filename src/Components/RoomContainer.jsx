@@ -42,6 +42,13 @@ class RoomContainer extends React.Component {
   }
 
   createComment = (text) => {
+    axios.get(process.env.REACT_APP_SERVER_URL + "/rooms/" + this.props.room.id + "/comments")
+      .then((result) => {
+        this.setState({comments: result.data})
+      })
+      .catch((data) => {
+        console.log(data)
+      })
     axios.post(process.env.REACT_APP_SERVER_URL + "/rooms/" + this.props.room.id + "/comments", {text: text})
       .then((result) => {
         const newData = update(this.state.comments, {$unshift:[result.data]})
