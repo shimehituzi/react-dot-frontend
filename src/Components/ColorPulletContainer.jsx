@@ -3,6 +3,7 @@ import Grid from '@material-ui/core/Grid'
 import ToggleButtonGroup from '@material-ui/lab/ToggleButtonGroup'
 import ToggleButton from '@material-ui/lab/ToggleButton'
 import Brightness1Icon from '@material-ui/icons/Brightness1';
+import {getColor} from './getColor'
 
 class ColorPulletContainer extends React.Component {
   constructor(props) {
@@ -16,7 +17,6 @@ class ColorPulletContainer extends React.Component {
     if (newColor != null) this.setState({color: newColor})
     this.props.changeColor(newColor)
   }
-
 
   render() {
     const renderTB = ({
@@ -36,12 +36,12 @@ class ColorPulletContainer extends React.Component {
     return(
       <Grid container justify="center" style={{marginBottom: "5%"}}>
         <ToggleButtonGroup size="small" value={this.state.color} exclusive onChange={this.handleChange}>
-          {renderTB({key: '1', value: '1', color: '#616161'})}
-          {renderTB({key: '2', value: '2', color: '#ff8a80'})}
-          {renderTB({key: '3', value: '3', color: '#82b1ff'})}
-          {renderTB({key: '4', value: '4', color: '#b9f6ca'})}
-          {renderTB({key: '5', value: '5', color: '#ffff8d'})}
-          {renderTB({key: '0', value: '0', color: '#f5f5f5'})}
+          {renderTB({key: '1', value: '1', color: getColor("1")})}
+          {renderTB({key: '2', value: '2', color: getColor("2")})}
+          {renderTB({key: '3', value: '3', color: getColor("3")})}
+          {renderTB({key: '4', value: '4', color: getColor("4")})}
+          {renderTB({key: '5', value: '5', color: getColor("5")})}
+          {renderTB({key: '0', value: '0', color: getColor("0")})}
         </ToggleButtonGroup>
       </Grid>
     )

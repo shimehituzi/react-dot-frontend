@@ -1,26 +1,8 @@
 import React from 'react'
 import {ListItem} from '@material-ui/core'
+import {getColor} from './getColor'
 
 class CommentContainer extends React.Component {
-  getColor = (data) => {
-    switch(data) {
-      case '1':
-        return '#616161'
-      case '2':
-        return '#ff8a80'
-      case '3':
-        return '#82b1ff'
-      case '4':
-        return '#b9f6ca'
-      case '5':
-        return '#ffff8d'
-      case '0':
-        return '#f5f5f5'
-      default:
-        return '#f5f5f5'
-    }
-  }
-
   render() {
     const range = (start, stop, step) => Array.from({ length: (stop - start) / step + 1}, (_, i) => start + (i * step))
     const row = 9
@@ -34,7 +16,7 @@ class CommentContainer extends React.Component {
               <div className='campus-row' key={j}>
                 {range(j * col, j * col + col -1, 1).map((i) => {
                   return(
-                    <div key={i} className="dot" style={{background: `${this.getColor(this.props.comment.text.charAt(i))}`}} ></div>
+                    <div key={i} className="dot" style={{background: `${getColor(this.props.comment.text.charAt(i))}`}} ></div>
                   )
                 })}
               </div>

@@ -1,5 +1,6 @@
 import React from 'react'
 import ColorPulletContainer from './ColorPulletContainer'
+import {getColor} from './getColor'
 
 class CampusContainer extends React.Component {
   constructor(props) {
@@ -14,24 +15,6 @@ class CampusContainer extends React.Component {
     }
   }
   
-  getColor = (data) => {
-    switch(data) {
-      case '1':
-        return '#616161'
-      case '2':
-        return '#ff8a80'
-      case '3':
-        return '#82b1ff'
-      case '4':
-        return '#b9f6ca'
-      case '5':
-        return '#ffff8d'
-      case '0':
-        return '#f5f5f5'
-      default:
-        return '#f5f5f5'
-    }
-  }
 
   handleclick = (i) => {
     const dots = this.state.dots.slice()
@@ -72,7 +55,7 @@ class CampusContainer extends React.Component {
                     <div
                       key={i}
                       className="dot"
-                      style={{background: `${this.getColor(this.state.dots[i])}`}}
+                      style={{background: `${getColor(this.state.dots[i])}`}}
                       onClick={() => this.handleclick(i)}
                     >
                     </div>
