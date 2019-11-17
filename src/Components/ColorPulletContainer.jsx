@@ -17,6 +17,24 @@ class ColorPulletContainer extends React.Component {
     this.props.changeColor(newColor)
   }
 
+  getColor = (data) => {
+    switch(data) {
+      case '1':
+        return '#616161'
+      case '2':
+        return '#ff8a80'
+      case '3':
+        return '#82b1ff'
+      case '4':
+        return '#b9f6ca'
+      case '5':
+        return '#ffff8d'
+      case '0':
+        return '#f5f5f5'
+      default:
+        return '#f5f5f5'
+    }
+  }
 
   render() {
     const renderTB = ({
@@ -36,12 +54,12 @@ class ColorPulletContainer extends React.Component {
     return(
       <Grid container justify="center" style={{marginBottom: "5%"}}>
         <ToggleButtonGroup size="small" value={this.state.color} exclusive onChange={this.handleChange}>
-          {renderTB({key: '1', value: '1', color: '#616161'})}
-          {renderTB({key: '2', value: '2', color: '#ff8a80'})}
-          {renderTB({key: '3', value: '3', color: '#82b1ff'})}
-          {renderTB({key: '4', value: '4', color: '#b9f6ca'})}
-          {renderTB({key: '5', value: '5', color: '#ffff8d'})}
-          {renderTB({key: '0', value: '0', color: '#f5f5f5'})}
+          {renderTB({key: '1', value: '1', color: this.getColor("1")})}
+          {renderTB({key: '2', value: '2', color: this.getColor("2")})}
+          {renderTB({key: '3', value: '3', color: this.getColor("3")})}
+          {renderTB({key: '4', value: '4', color: this.getColor("4")})}
+          {renderTB({key: '5', value: '5', color: this.getColor("5")})}
+          {renderTB({key: '0', value: '0', color: this.getColor("0")})}
         </ToggleButtonGroup>
       </Grid>
     )
