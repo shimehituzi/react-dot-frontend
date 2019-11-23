@@ -3,13 +3,19 @@ import {ListItem} from '@material-ui/core'
 import {getColor} from './getColor'
 
 class CommentContainer extends React.Component {
+
+  showCommentID = (comment) => {
+    console.log(comment.id)
+    console.log(comment.room_id)
+  }
+
   render() {
     const range = (start, stop, step) => Array.from({ length: (stop - start) / step + 1}, (_, i) => start + (i * step))
     const row = 9
     const col = 9
 
     return(
-      <ListItem>
+      <ListItem onClick={(() => this.showCommentID(this.props.comment))}>
         <div className="campus-table">
           {range(0, row-1, 1).map((j) => {
             return(
