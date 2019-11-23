@@ -9,19 +9,20 @@ import CommentsContainer from './CommentsContainer'
 import {Toolbar, Fab, Typography, Grid} from '@material-ui/core'
 import AddIcon from '@material-ui/icons/Add'
 import DotFormContainer from './DotFormContainer'
+import RotateRightIcon from '@material-ui/icons/RotateRight';
 
 class RoomContainer extends React.Component {
   constructor(props) {
     super(props)
     this.state = {
       comments: [],
-      isClose: true,
+      neverOpened: true,
       open: false
     }
   }
 
   handleRoomClick = () => {
-    if (this.state.isClose)  {
+    if (this.state.neverOpened)  {
       axios.get(process.env.REACT_APP_SERVER_URL + "/rooms/" + this.props.room.id + "/comments")
         .then((result) => {
           this.setState({comments: result.data})
@@ -30,7 +31,7 @@ class RoomContainer extends React.Component {
           console.log(data)
         })
     } 
-    this.setState({isClose: !this.state.isClose})
+    this.setState({neverOpened: false})
   }
 
   handleOpen = () => {
@@ -39,6 +40,16 @@ class RoomContainer extends React.Component {
 
   handleClose = () => {
     this.setState({open: false})
+  }
+
+  handleUpdate = () => {
+    axios.get(process.env.REACT_APP_SERVER_URL + "/rooms/" + this.props.room.id + "/comments")
+      .then((result) => {
+        this.setState({comments: result.data})
+      })
+      .catch((data) => {
+        console.log(data)
+      })
   }
 
   createComment = (text) => {
@@ -73,9 +84,16 @@ class RoomContainer extends React.Component {
           <Grid container justify = "center">
             <Grid item xs={12} style={{marginBottom: "10%"}}>
               <Grid container justify = "center">
-                <Fab color="secondary" size="medium" onClick={this.handleOpen}>
-                  <AddIcon />
-                </Fab>
+                <Grid container>
+                  <Fab color="primary" size="small" onClick={this.handleUpdate}>
+                    <RotateRightIcon/>
+                  </Fab>
+                </Grid>
+                <Grid container justify="center">
+                  <Fab color="secondary" size="medium" onClick={this.handleOpen}>
+                    <AddIcon />
+                  </Fab>
+                </Grid>
                 <DotFormContainer
                   keepMounted
                   open={this.state.open}
